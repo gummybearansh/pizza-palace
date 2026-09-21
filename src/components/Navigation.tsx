@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Flame, List, X } from "@phosphor-icons/react";
+import { track } from "@/lib/analytics";
 
 const links = [
   { href: "#craft", label: "Craft" },
@@ -45,12 +46,14 @@ export default function Navigation() {
           <div className="flex shrink-0 items-center gap-4">
             <a
               href="tel:+14155550134"
+              onClick={() => track("phone_click", { location: "nav" })}
               className="hidden font-mono text-xs tracking-wide text-[#1A1714]/55 transition-colors hover:text-[#1A1714] lg:inline"
             >
               (415) 555-0134
             </a>
             <a
               href="#visit"
+              onClick={() => track("order_intent", { location: "nav" })}
               className="group hidden items-center gap-2 rounded-full bg-[#1A1714] py-2 pl-6 pr-2 text-sm font-medium text-[#FFFBF2] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] sm:inline-flex"
             >
               <span className="py-1.5">Order Pickup</span>
@@ -93,7 +96,10 @@ export default function Navigation() {
             ))}
             <a
               href="#visit"
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                track("order_intent", { location: "nav_mobile" });
+                setOpen(false);
+              }}
               className="mt-2 inline-flex items-center justify-center rounded-full bg-[#1A1714] px-6 py-3.5 text-sm font-medium text-[#FFFBF2]"
             >
               Order Pickup

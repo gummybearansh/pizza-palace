@@ -7,6 +7,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Clock } from "@phosphor-icons/react";
 import Navigation from "./Navigation";
+import { track } from "@/lib/analytics";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -117,6 +118,7 @@ export default function Hero() {
           <div className="hero-cta mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
               href="#visit"
+              onClick={() => track("order_intent", { location: "hero" })}
               className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#1A1714] py-2 pl-8 pr-2 text-base font-medium text-[#FFFBF2] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
             >
               <span className="py-2.5">Order Pickup</span>
@@ -126,6 +128,7 @@ export default function Hero() {
             </a>
             <a
               href="#menu"
+              onClick={() => track("cta_click", { cta: "menu", location: "hero" })}
               className="inline-flex items-center justify-center rounded-full border border-[#1A1714]/15 bg-transparent px-8 py-4 text-base font-medium text-[#1A1714] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-[#C93A2B]/50 hover:text-[#C93A2B] active:scale-[0.98]"
             >
               View Menu

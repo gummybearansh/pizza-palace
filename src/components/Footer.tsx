@@ -1,4 +1,5 @@
 import { Flame, ArrowRight, MapPin, Clock } from "@phosphor-icons/react/dist/ssr";
+import { TrackedAnchor } from "./TrackedAnchor";
 
 export default function Footer() {
   return (
@@ -33,15 +34,17 @@ export default function Footer() {
             you walk in.
           </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a
+            <TrackedAnchor
               href="tel:+14155550134"
+              event="phone_click"
+              eventProps={{ location: "footer" }}
               className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#C93A2B] py-2 pl-8 pr-2 text-base font-medium text-white transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-[#b23326] active:scale-[0.98]"
             >
               <span className="py-2.5">Order Pickup</span>
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/20 transition-colors duration-300 group-hover:bg-white/35">
                 <ArrowRight size={18} weight="bold" aria-hidden="true" />
               </span>
-            </a>
+            </TrackedAnchor>
             <a
               href="#top"
               className="inline-flex items-center justify-center rounded-full border border-white/20 px-8 py-4 text-base font-medium text-[#FFFBF2] transition-all duration-500 hover:border-white/40 hover:bg-white/5 active:scale-[0.98]"
@@ -81,13 +84,15 @@ export default function Footer() {
             </p>
             <div className="mt-4 flex flex-col gap-2">
               {["Pickup counter", "Phone orders", "Catering trays"].map((x) => (
-                <a
+                <TrackedAnchor
                   key={x}
                   href="tel:+14155550134"
+                  event="phone_click"
+                  eventProps={{ location: "footer_list" }}
                   className="w-fit leading-relaxed text-white/80 transition-colors hover:text-white"
                 >
                   {x}
-                </a>
+                </TrackedAnchor>
               ))}
             </div>
           </div>
